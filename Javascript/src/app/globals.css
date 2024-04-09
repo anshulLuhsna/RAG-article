@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #000000;
+}
+
+
+body {
+  background:#000000;
+}
+
+.no-outline:focus {
+  outline: none;
+  /* Add any other styles you want to apply when the input is focused */
+}
