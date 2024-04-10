@@ -2,19 +2,9 @@ import streamlit as st
 import requests
 import json
 import re
-from langchain_core.outputs import ChatGenerationChunk
-from langchain_core.callbacks.manager import CallbackManagerForLLMRun, AsyncCallbackManagerForLLMRun
-from typing import Any, Iterator, List, Optional, AsyncIterator
+from typing import Any
 from langchain_core.language_models.llms import LLM
-from langchain_core.messages import (
-    AIMessage,
-    BaseMessage,
-    FunctionMessage,
-    HumanMessage,
-    SystemMessage,
-    ToolMessage,
-)
-from typing import Any, Iterator, List, Optional, AsyncIterator, Mapping
+from typing import Any, Mapping
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from pinecone import Pinecone
@@ -76,7 +66,6 @@ class CustomLLM(LLM):
 
     @property
     def _identifying_params(self) -> Mapping[str, Any]:
-        """Get identifying parameters."""
         return {"n": self.n}
 
 llm = CustomLLM(n=10)
@@ -127,7 +116,6 @@ def main():
         else:
             st.warning("Please enter both prompt and topic.")
 
-   
 
 if __name__ == '__main__':
     main()
