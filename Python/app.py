@@ -1,4 +1,4 @@
-import Python.app as st
+import streamlit as st
 import requests
 import json
 import re
