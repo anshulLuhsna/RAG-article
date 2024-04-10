@@ -90,16 +90,16 @@ def generate_response():
             top_k=1,
             include_metadata=True,
         )
-        print(query_result)
+        # print(query_result)
         context = query_result['matches'][0]['metadata']['text']
         # page = query_result['matches'][0]['metadata']['page']
         # print(page)
-        print(context)
+        # print(context)
         
         # Create prompt with retrieved context
         prompt_template = ChatPromptTemplate.from_template(prompt_text + "\n\nContext: {context}\n\nTopic: {topic}")
 
-        
+        print(prompt_template)
         output_parser = StrOutputParser()
         
         chain = prompt_template | llm | output_parser
