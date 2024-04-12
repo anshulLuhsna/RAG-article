@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const EchoChat = (props) => {
+const BotChat = (props) => {
   // console.log(props.content)
   var decodedContent = ""
   var content = ""
@@ -46,4 +46,4 @@ const EchoChat = (props) => {
   );
 };
 
-export default EchoChat;
+export default BotChat;

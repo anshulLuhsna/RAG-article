@@ -1,6 +1,6 @@
 "use client";
 import { useChat } from "ai/react";
-import EchoChat from "./BotChat.js";
+import BotChat from "./BotChat.js";
 import UserChat from "./UserChat.js";
 import { useEffect, useRef, useState } from "react";
 import { FileInput, Label } from "flowbite-react";
@@ -121,8 +121,8 @@ const OpenAI = (props) => {
                   <UserChat content={m.content} />
                   
                 ) : m.role === "assistant" ? (
-                  // Add a condition to check if role is 'assistant' before rendering EchoChat
-                  <EchoChat object={m} content={m.content} />
+                  // Add a condition to check if role is 'assistant' before rendering BotChat
+                  <BotChat object={m} content={m.content} />
                 ) : null}
                  {messages.length === 1 && (
         <>
