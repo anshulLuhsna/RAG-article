@@ -4,6 +4,7 @@ import BotChat from "./BotChat";
 import UserChat from "./ClientChat";
 import { useEffect, useRef, useState } from "react";
 import { FileInput, Label } from "flowbite-react";
+import '../globals.css'
 
 const OuterChat = (props) => {
   const [firstResponse, setFirstResponse] = useState(false)
@@ -113,7 +114,7 @@ const OuterChat = (props) => {
         </>
       )}
 
-      <div ref={messageContainerRef} className= {`h-${messages.length===0 ? "[70vh] overflow-y-hidden":"[80vh] overflow-y-auto "} `}>
+      <div ref={messageContainerRef} className={`overflow-y-auto ${messages.length > 0 ? 'h-[80vh]' : 'h-[70vh]'}`}>
         {messages.length > 0
           ? messages.map((m) => (
               <div key={m.id} className="whitespace-pre-wrap">
@@ -123,7 +124,7 @@ const OuterChat = (props) => {
                 ) : m.role === "assistant" ? (
                   // Add a condition to check if role is 'assistant' before rendering BotChat
                   <BotChat object={m} content={m.content} />
-                ) : null}
+                ) :null}
                  {messages.length === 1 && (
         <>
         <div className=" ml-32 p-2 bg-gray-200 inline-block rounded-lg ">Creating Vector DB...</div>
