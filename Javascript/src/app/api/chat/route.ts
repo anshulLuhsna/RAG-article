@@ -70,7 +70,7 @@ export async function POST(req: Request) {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Accept", "application/json");
-  myHeaders.append("Authorization", "Bearer sk-02842da58e904ed9bcfc25be5efce51f");
+  myHeaders.append("Authorization", "Bearer sk-27b8b8f2bdb142518417ea2f18937263");
 
   const raw = JSON.stringify({
     "question": lastUserQuestion,
@@ -99,7 +99,7 @@ export async function POST(req: Request) {
 
     return new StreamingTextResponse(response.body);
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error('Error:', error);
     return new Response('Internal Server Error', { status: 500 });
   }
 }
