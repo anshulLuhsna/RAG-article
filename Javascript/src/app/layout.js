@@ -4,8 +4,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export const metadata = {
-  title: 'Echo',
-  description: 'Your next generative AI chat bot.',
+  title: 'PDF chatbot',
+  description: 'Talk with your pdfs!',
 }
 
 export default function RootLayout({ children }) {
