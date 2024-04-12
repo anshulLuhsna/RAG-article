@@ -12,11 +12,11 @@ import '../globals.css'
 const OuterChat = (props) => {
   const [firstResponse, setFirstResponse] = useState(false)
   const handleFirstResponse = () => {
-    console.log("responseeee")
+
     setFirstResponse(true)
   }
   const handleFinish = () => {
-    console.log("helloooo");
+  
   };
   const messageContainerRef = useRef(null);
   const [extractedText, setExtractedText] = useState(null);

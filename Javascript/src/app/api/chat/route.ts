@@ -24,22 +24,22 @@ const promptTemplate = PromptTemplate.fromTemplate(`question : {message} \n\ncon
 
 export async function POST(req: Request) {
   const { messages, extractedText, model } = await req.json();
-  console.log(model)
+  
   let chain = null
 
   if(model === "v2"){
-    console.log("V222")
+   
     chain = promptTemplate.pipe(llmV2)
   }
   else{
-    console.log("V333")
+    
 
     chain = promptTemplate.pipe(llmV3)
   }
   const hasAssistantMessages = messages.some(message => message.role === 'assistant');
-  console.log(hasAssistantMessages)
+
   if (!vectorStore || !hasAssistantMessages) {
-    console.log("vectorDB created")
+    
     const textSplitter = new RecursiveCharacterTextSplitter({
       chunkSize: 2000,
       chunkOverlap: 200,
