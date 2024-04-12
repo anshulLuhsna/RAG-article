@@ -113,7 +113,7 @@ const OuterChat = (props) => {
         </>
       )}
 
-      <div ref={messageContainerRef} className={`h-[70vh] overflow-y-auto`}>
+      <div ref={messageContainerRef} className= {`h-${messages.length===0 ? "[70vh] overflow-y-hidden":"[80vh] overflow-y-auto "} `}>
         {messages.length > 0
           ? messages.map((m) => (
               <div key={m.id} className="whitespace-pre-wrap">
