@@ -1,8 +1,8 @@
 'use client'
 import {useState,useEffect } from 'react';
 import Link from 'next/link'
-import OpenAI from '../components/openAI.js';
-import HuggingFace from '../components/huggingFace.js';
+import OuterChat from '../components/OuterChat.js';
+
 
 export default function Page() {
 
@@ -54,7 +54,7 @@ export default function Page() {
       setInputVal("")
     };
     return (
-      <div className >
+      <div className = "" >
         <div className = " flex justify-between  h-[6vh] px-3  py-[0.5] shadow-md ">
           <div className = "flex justify-center items-center">
             <Link href = "/">
@@ -72,39 +72,8 @@ export default function Page() {
           </div>
         </div>
         {value === "Ai-Con-V2" ?
-          <OpenAI full = {"true"}/> :
-          value === "Open Assistant" ?
-          <HuggingFace full = {"true"}/> :
-          <div className = {`flex ${windowSize > 500 ? "visible": "hidden"}`}>
-            <div className = "w-[50%] border border-neutral-300 m-2">
-                <OpenAI full = {"false"} sendVal = {sendVal} inputVal = {inputVal}/>
-                <form onSubmit={handleSubmit} className = {`ml-[2vw] mr-[1vw] my-2`}>
-                  <input
-                  className = {`w-[45vw] h-[6vh] bg-[#ECEBEB] pl-[2vw] rounded drop-shadow-md relative focus:outline-none`}
-                  value={inputVal}
-                  placeholder="Say something..."
-                  onChange={inputChange}
-                  />
-                <button className = {`left-[42vw] absolute  bottom-[vh] px-4 py-2`}>
-                <img src = "paper-plane-right-bold.png" width={25}/>
-                </button>
-              </form>
-            </div>
-            <div className = "w-[50%] border border-neutral-300 m-2">
-              <HuggingFace full = {"false"} sendVal = {sendVal} inputVal = {inputVal}/>
-              <form onSubmit={handleSubmit} className = {`ml-[2vw] mr-[1vw] my-2`}>
-                  <input
-                  className = {`w-[45vw] h-[6vh] bg-[#ECEBEB] pl-[2vw] rounded drop-shadow-md relative focus:outline-none`}
-                  value={inputVal}
-                  placeholder="Say something..."
-                  onChange={inputChange}
-                  />
-                <button className = {`right-[3vw] absolute  bottom-[vh] px-4 py-2`}>
-                <img src = "paper-plane-right-bold.png" width={25}/>
-                </button>
-              </form>
-            </div>
-          </div>
+          <OuterChat full = {"true"}/> :
+          null
         }
       </div>
     )

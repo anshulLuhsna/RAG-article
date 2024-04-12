@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const EchoChat = (props) => {
+  // console.log(props.content)
   var decodedContent = ""
   var content = ""
   var jsonSeparated = props.content.split("\n\n");
@@ -18,7 +19,7 @@ const EchoChat = (props) => {
     if (parsedValue && parsedValue.content) {
       decodedContent += parsedValue.content;
       content = decodedContent.replace(/(?:\r\n|\r|\n)/g, "\n");
-      console.log(content)
+      // console.log(content)
     }})
   }
   catch(error){
