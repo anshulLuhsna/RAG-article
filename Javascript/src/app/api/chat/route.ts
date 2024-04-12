@@ -2,9 +2,22 @@ import { StreamingTextResponse } from 'ai';
 import { OpenAIEmbeddings } from '@langchain/openai';
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
+import { CustomLLM } from './custom_llm'; 
+import { PromptTemplate } from "@langchain/core/prompts";
+
+
+const llm = new CustomLLM({
+  apiKey: "sk-27b8b8f2bdb142518417ea2f18937263",
+});
 
 let vectorStore;
 let context = ""
+
+const promptTemplate = PromptTemplate.fromTemplate(`question : {message} \n\ncontext: {context}\n\n history: {messages}`)
+const chain = promptTemplate.pipe(llm);
+
+
+
 export async function POST(req: Request) {
   const { messages, extractedText } = await req.json();
 
@@ -60,7 +73,7 @@ export async function POST(req: Request) {
 
   if (vectorStore) {
     const searchResults = await vectorStore.similaritySearch(lastUserQuestion, 1);
-    console.log('Context:', searchResults[0].pageContent);
+    // console.log('Context:', searchResults[0].pageContent);
     context = searchResults[0].pageContent
   } else {
     console.log('Vector store is not initialized');
@@ -70,7 +83,7 @@ export async function POST(req: Request) {
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Accept", "application/json");
-  myHeaders.append("Authorization", "Bearer sk-27b8b8f2bdb142518417ea2f18937263");
+  myHeaders.append("Authorization", "Bearer ");
 
   const raw = JSON.stringify({
     "question": lastUserQuestion,
@@ -89,15 +102,19 @@ export async function POST(req: Request) {
   };
 
   try {
-    const response = await fetch("https://api.worqhat.com/api/ai/content/v2", requestOptions);
+    // const response = await fetch("https://api.worqhat.com/api/ai/content/v2", requestOptions);
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    // if (!response.ok) {
+    //   throw new Error(`HTTP error! Status: ${response.status}`);
+    // }
 
-    console.log(response.body);
-
-    return new StreamingTextResponse(response.body);
+    const stream = await chain.stream({
+      message: lastUserQuestion,
+      context: context,
+      messages: JSON.stringify(messages)
+    });
+   
+    return new StreamingTextResponse(stream);
   } catch (error) {
     console.error('Error:', error.message);
     return new Response('Internal Server Error', { status: 500 });

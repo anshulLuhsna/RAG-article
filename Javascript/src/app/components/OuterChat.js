@@ -107,9 +107,9 @@ const OuterChat = (props) => {
     <div className={``}>
       {messages.length === 0 && (
         <>
-          <div className="mt-4 w-1/2 mx-auto">
-            <Label htmlFor="file">Upload a file</Label>
-            <FileInput id="file" onChange={handleFileUpload} />
+          <div className="mt-4 w-3/4 lg:w-1/2  mx-auto">
+            <Label htmlFor="file" className="text-white">Upload a file</Label>
+            <FileInput id="file" onChange={handleFileUpload} className="mt-2"/>
           </div>
         </>
       )}
@@ -141,7 +141,7 @@ const OuterChat = (props) => {
           props.full === "true" ? "visible" : "hidden"
         } flex h-[6vh] my-2`}
       >
-        <form onSubmit={handleSubmit} className="ml-[2vw] mr-[1vw]">
+        <form onSubmit={handleSubmit} className="ml-[2vw] mx-2 mr-[1vw]">
           <input
             className={`w-[82vw] lg:w-[85vw] h-[6vh] bg-[#ECEBEB] pl-[2vw] rounded drop-shadow-md relative focus:outline-none`}
             value={input}
