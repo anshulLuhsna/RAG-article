@@ -88,7 +88,7 @@ const OuterChat = (props) => {
               page.getTextContent().then((content) => {
                 let text = "";
                 content.items.forEach((item) => {
-                  text += item.str + " ";
+                  text += item.str + "";
                 });
                 combinedText += text;
 
