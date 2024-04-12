@@ -8,7 +8,7 @@ export interface CustomLLMInput extends BaseLLMParams {
     apiKey: string;
   }
   
-  export class CustomLLM extends LLM {
+  export class CustomLLMV2 extends LLM {
     apiKey: string;
   
     constructor(fields: CustomLLMInput) {

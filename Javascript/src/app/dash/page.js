@@ -66,14 +66,14 @@ export default function Page() {
             <div className = "mr-2">Model</div>
             <select value={value} onChange={handleChange} className = "font-semibold bg-[#ECEBEB] rounded-md border border-black">
               <option value="Ai-Con-V2">Ai-Con-V2</option>
-              <option value="Open Assistant">Open Assistant</option>
-              {windowSize > 500 ? <option value="Compare">Compare</option> : null}
+              <option value="Open Assistant">Ai-Con-V3</option>
+              
             </select>
           </div>
         </div>
         {value === "Ai-Con-V2" ?
-          <OuterChat full = {"true"}/> :
-          null
+          <OuterChat model={"v2"} full = {"true"}/> :
+          <OuterChat model={"v3"} full = {"true"}/>
         }
       </div>
     )

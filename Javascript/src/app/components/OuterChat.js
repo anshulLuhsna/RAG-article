@@ -23,7 +23,7 @@ const OuterChat = (props) => {
   const { messages, input, append, handleInputChange, handleSubmit } = useChat({
     onFinish: handleFinish,
     onResponse: handleFirstResponse,
-    body: { extractedText: extractedText },
+    body: { extractedText: extractedText, model:props.model },
 
   });
 
