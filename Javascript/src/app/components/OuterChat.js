@@ -1,7 +1,7 @@
 "use client";
 import { useChat } from "ai/react";
 import BotChat from "./BotChat";
-import UserChat from "../components/UserChat";
+import UserChat from "./ClientChat";
 import { useEffect, useRef, useState } from "react";
 import { FileInput, Label } from "flowbite-react";
 
