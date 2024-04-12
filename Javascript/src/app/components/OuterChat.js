@@ -4,6 +4,9 @@ import BotChat from "./BotChat";
 import UserChat from "./ClientChat";
 import { useEffect, useRef, useState } from "react";
 import { FileInput, Label } from "flowbite-react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRotate } from '@fortawesome/free-solid-svg-icons'
+
 import '../globals.css'
 
 const OuterChat = (props) => {
@@ -127,7 +130,7 @@ const OuterChat = (props) => {
                 ) :null}
                  {messages.length === 1 && (
         <>
-        <div className=" ml-32 p-2 bg-gray-200 inline-block rounded-lg ">Creating Vector DB...</div>
+        <div className=" ml-32 p-2 bg-gray-200 inline-block rounded-lg ">Creating Vector DB  <FontAwesomeIcon className="animate-spin" icon={faRotate} /></div>
         </>
       )}
               </div>
