@@ -5,7 +5,7 @@ import UserChat from "../components/UserChat";
 import { useEffect, useRef, useState } from "react";
 import { FileInput, Label } from "flowbite-react";
 
-const OpenAI = (props) => {
+const OuterChat = (props) => {
   const [firstResponse, setFirstResponse] = useState(false)
   const handleFirstResponse = () => {
     console.log("responseeee")
@@ -169,4 +169,4 @@ const OpenAI = (props) => {
   );
 };
 
-export default OpenAI;
+export default OuterChat;
