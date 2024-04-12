@@ -99,7 +99,7 @@ export async function POST(req: Request) {
 
     return new StreamingTextResponse(response.body);
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error:', error.message);
     return new Response('Internal Server Error', { status: 500 });
   }
 }
