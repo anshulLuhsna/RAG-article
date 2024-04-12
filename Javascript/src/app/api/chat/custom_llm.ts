@@ -93,7 +93,7 @@ export interface CustomLLMInput extends BaseLLMParams {
         const message = messageMatch ? messageMatch[1].trim() : "";
         const context = contextMatch ? contextMatch[1].trim() : "";
         const historyString = historyMatch ? historyMatch[1].trim() : "[]";
-      
+        console.log(context)
         // Parse history string into an array of messages
         const history = JSON.parse(historyString);
         console.log(history)

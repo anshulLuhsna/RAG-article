@@ -11,7 +11,7 @@ export default function Home() {
           <h1 className = "text-[7vw] md:text-[5vw] font-semibold text-center text-white">PDF chat</h1>
           <div className = "text-[2.5vw] md:text-[1.3vw]">
         </div>
-          <div className = "text-base text-white text-center mt-4">Powered by <span className = "text-[#b184cb] font-semibold">Worqhat LLMs</span> and <span className = "text-[#CD662C] font-semibold">Langchain.</span>.</div>
+          <div className = "text-base text-white text-center mt-4">Powered by <span className = "text-[#b184cb] font-semibold">Worqhat LLMs</span> and <span className = "text-[#CD662C] font-semibold">Langchain.</span></div>
         </div>
 
       </div>

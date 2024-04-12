@@ -26,7 +26,7 @@ export async function POST(req: Request) {
   if (!vectorStore || !hasAssistantMessages) {
     console.log("vectorDB created")
     const textSplitter = new RecursiveCharacterTextSplitter({
-      chunkSize: 1000,
+      chunkSize: 2000,
       chunkOverlap: 200,
     });
 
