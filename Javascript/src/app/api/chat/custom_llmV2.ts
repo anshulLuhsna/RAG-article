@@ -106,7 +106,7 @@ export interface CustomLLMInput extends BaseLLMParams {
           },
           body: JSON.stringify({
             "question": message,
-            "training_data": context,
+            "training_data": "You are a pdf-chatbot. Your job is to answer questions that the user asks about the uploaded pdf. The following context from the pdf which will help you answer the user query. If there is no context, ask the user to upload a pdf. Context: " + context,
             "preserve_history": true,
             "conversation_history": history,
             "stream_data": true
