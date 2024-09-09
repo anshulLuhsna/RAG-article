@@ -1,5 +1,5 @@
 import { StreamingTextResponse } from 'ai';
-import { OpenAIEmbeddings } from '@langchain/openai';
+import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { CustomLLMV2 } from './custom_llmV2'; 
@@ -44,10 +44,10 @@ export async function POST(req: Request) {
       chunkSize: 2000,
       chunkOverlap: 200,
     });
-
+    const embeddings = new HuggingFaceInferenceEmbeddings();
     if (extractedText) {
       const docs = await textSplitter.createDocuments([extractedText]);
-      vectorStore = await MemoryVectorStore.fromDocuments(docs, new OpenAIEmbeddings());
+      vectorStore = await MemoryVectorStore.fromDocuments(docs, embeddings);
     } else {
       console.log('Extracted text is empty or null');
      
