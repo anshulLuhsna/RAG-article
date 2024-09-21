@@ -1,5 +1,5 @@
 import { StreamingTextResponse } from 'ai';
-import { HuggingFaceInferenceEmbeddings } from "@langchain/community/embeddings/hf";
+import { OpenAIEmbeddings } from '@langchain/openai';
 import { MemoryVectorStore } from 'langchain/vectorstores/memory';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { CustomLLMV2 } from './custom_llmV2'; 
@@ -44,10 +44,11 @@ export async function POST(req: Request) {
       chunkSize: 2000,
       chunkOverlap: 200,
     });
-    const embeddings = new HuggingFaceInferenceEmbeddings();
+    const embeddings = new OpenAIEmbeddings();
     if (extractedText) {
       const docs = await textSplitter.createDocuments([extractedText]);
       vectorStore = await MemoryVectorStore.fromDocuments(docs, embeddings);
+      console.log("Embeddings done")
     } else {
       console.log('Extracted text is empty or null');
      
@@ -90,6 +91,7 @@ export async function POST(req: Request) {
     const searchResults = await vectorStore.similaritySearch(lastUserQuestion, 1);
     // console.log('Context:', searchResults[0].pageContent);
     context = searchResults[0].pageContent
+    console.log("Vector store created");
   } else {
     console.log('Vector store is not initialized');
     // Handle case when vectorStore is undefined

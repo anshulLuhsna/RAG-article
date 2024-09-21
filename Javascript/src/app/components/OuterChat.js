@@ -104,6 +104,7 @@ const OuterChat = (props) => {
         // Start extracting text from page 1
         getPageText(1);
       });
+      console.log(extractedText)
   };
 
   return (
