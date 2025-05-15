@@ -8,10 +8,10 @@ import { PromptTemplate } from "@langchain/core/prompts";
 
 
 const llmV2 = new CustomLLMV2({
-  apiKey: "sk-27b8b8f2bdb142518417ea2f18937263",
+  apiKey: "sk-128fd96fdf0d4039bdaef731e091de03",
 });
 const llmV3 = new CustomLLMV3({
-  apiKey: "sk-27b8b8f2bdb142518417ea2f18937263",
+  apiKey: "sk-128fd96fdf0d4039bdaef731e091de03",
 });
 
 let vectorStore;
